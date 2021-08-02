@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>cogent.tcvm</groupId>
-	<artifactId>TeaCoffeeVendingMachineBackend</artifactId>
+	<artifactId>TeaCoffeeVendingMachine</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>TeaCoffeeVendingMachineBackend</name>
+	<name>TeaCoffeeVendingMachine</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
