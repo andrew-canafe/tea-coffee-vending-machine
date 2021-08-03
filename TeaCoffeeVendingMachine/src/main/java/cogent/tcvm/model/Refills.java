@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="REFILLS")
 public class Refills {
@@ -30,8 +32,25 @@ public class Refills {
 	@Column(name="MILK_REFILL")
 	private int milkRefill;
 	
+	@JsonIgnore
 	@Column(name="DATE")
 	private LocalDate date;
+
+	public Refills() {
+		super();
+	}
+
+	public Refills(int refillId, int teaRefill, int coffeeRefill, int sugarRefill, int waterRefill, int milkRefill,
+			LocalDate date) {
+		super();
+		this.refillId = refillId;
+		this.teaRefill = teaRefill;
+		this.coffeeRefill = coffeeRefill;
+		this.sugarRefill = sugarRefill;
+		this.waterRefill = waterRefill;
+		this.milkRefill = milkRefill;
+		this.date = date;
+	}
 
 	public int getRefillId() {
 		return refillId;
