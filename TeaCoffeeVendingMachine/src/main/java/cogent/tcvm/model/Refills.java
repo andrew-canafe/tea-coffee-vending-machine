@@ -89,4 +89,11 @@ public class Refills {
 		this.date = date;
 	}
 
+	@Override
+	public String toString() {
+		return "Refills [refillId=" + refillId + ", teaRefill=" + teaRefill + ", coffeeRefill=" + coffeeRefill
+				+ ", sugarRefill=" + sugarRefill + ", waterRefill=" + waterRefill + ", milkRefill=" + milkRefill
+				+ ", date=" + date + "]";
+	}
+
 }

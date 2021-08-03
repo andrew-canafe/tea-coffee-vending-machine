@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import cogent.tcvm.model.Refills;
 
-public interface RefillsRepository extends JpaRepository<Refills, Integer>{
+public interface RefillsRepository extends JpaRepository<Refills, Integer> {
 
 	List<Refills> findByDate(LocalDate date);
 	

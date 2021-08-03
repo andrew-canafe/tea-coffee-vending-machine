@@ -75,5 +75,12 @@ public class Containers {
 	public void setMilkContainer(float milkContainer) {
 		this.milkContainer = milkContainer;
 	}
+
+	@Override
+	public String toString() {
+		return "Containers [containersId=" + containersId + ", teaContainer=" + teaContainer + ", coffeeContainer="
+				+ coffeeContainer + ", sugarContainer=" + sugarContainer + ", waterContainer=" + waterContainer
+				+ ", milkContainer=" + milkContainer + "]";
+	}
 	
 }
