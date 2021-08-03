@@ -1,6 +1,6 @@
 package cogent.tcvm.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +25,7 @@ public class Sale {
 	private int numberOfCups;
 	
 	@Column(name="DATE")
-	private Date date;
+	private LocalDate date;
 
 	public int getSaleId() {
 		return saleId;
@@ -51,11 +51,11 @@ public class Sale {
 		this.numberOfCups = numberOfCups;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 	
