@@ -27,6 +27,18 @@ public class Sale {
 	@Column(name="DATE")
 	private LocalDate date;
 
+	public Sale() {
+		super();
+	}
+
+	public Sale(int saleId, Drink drinkId, int numberOfCups, LocalDate date) {
+		super();
+		this.saleId = saleId;
+		this.drinkId = drinkId;
+		this.numberOfCups = numberOfCups;
+		this.date = date;
+	}
+
 	public int getSaleId() {
 		return saleId;
 	}

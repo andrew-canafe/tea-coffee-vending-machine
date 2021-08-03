@@ -28,6 +28,21 @@ public class Containers {
 	@Column(name="MILK_CONTAINER")
 	private float milkContainer;
 
+	public Containers() {
+		super();
+	}
+
+	public Containers(int containersId, float teaContainer, float coffeeContainer, float sugarContainer,
+			float waterContainer, float milkContainer) {
+		super();
+		this.containersId = containersId;
+		this.teaContainer = teaContainer;
+		this.coffeeContainer = coffeeContainer;
+		this.sugarContainer = sugarContainer;
+		this.waterContainer = waterContainer;
+		this.milkContainer = milkContainer;
+	}
+
 	public int getContainersId() {
 		return containersId;
 	}
