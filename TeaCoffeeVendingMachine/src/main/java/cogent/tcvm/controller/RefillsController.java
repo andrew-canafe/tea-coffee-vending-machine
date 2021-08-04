@@ -1,5 +1,7 @@
 package cogent.tcvm.controller;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,10 +20,10 @@ public class RefillsController {
 	RefillsService refsServ;
 	
 	@GetMapping("/refill-details")
-	public ResponseEntity<RefillDetails> getRefillDetails() {
-		Refills refsAllDays = refsServ.getRefillsAllDays();
-		Refills refsToday = refsServ.getRefillsToday();
+	public ResponseEntity<?> getRefillDetails() {
+		Refills allDays = refsServ.getAllDays();
+		Refills today = refsServ.getToday();
 		
-		return ResponseEntity.ok(new RefillDetails(refsAllDays, refsToday));
+		return ResponseEntity.ok(new RefillDetails(allDays, today));
 	}
 }

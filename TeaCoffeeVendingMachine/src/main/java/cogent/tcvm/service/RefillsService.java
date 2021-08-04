@@ -24,11 +24,11 @@ public class RefillsService {
 		return r1;
 	}
 	
-	public Refills getRefillsAllDays() {
+	public Refills getAllDays() {
 		return refsRepo.findAll().stream().collect(Refills::new, this::refComb, this::refComb);
 	}
 	
-	public Refills getRefillsToday() {
+	public Refills getToday() {
 		List<Refills> refsList = refsRepo.findByDate(LocalDate.now());
 		Refills refs = null;
 		

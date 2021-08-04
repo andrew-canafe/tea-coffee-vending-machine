@@ -18,8 +18,8 @@ public class TestController {
 	
 	@GetMapping("/refs")
 	public void refsTest() {
-		System.out.println(refsServ.getRefillsAllDays());
-		System.out.println(refsServ.getRefillsToday());
+		System.out.println(refsServ.getAllDays());
+		System.out.println(refsServ.getToday());
 	}
 	
 	@GetMapping("/cons")
