@@ -3,6 +3,8 @@ package cogent.tcvm.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,20 +15,27 @@ public class Container {
 	@Column(name="CONTAINERS_ID")
 	private int containersId;
 	
-	@Column(name="TEA_CONTAINER")
-	private float teaContainer;
+	@ManyToOne
+	@JoinColumn(name="INGREDIENT_ID")
+	private Ingredient ingredient;
 	
-	@Column(name="COFFEE_CONTAINER")
-	private float coffeeContainer;
+	@Column(name="MAX_CAPACITY")
+	private float maxCapacity;
 	
-	@Column(name="SUGAR_CONTAINER")
-	private float sugarContainer;
-	
-	@Column(name="WATER_CONTAINER")
-	private float waterContainer;
-	
-	@Column(name="MILK_CONTAINER")
-	private float milkContainer;
+	@Column(name="AVAILABLE")
+	private float available;
+
+	public Container() {
+		super();
+	}
+
+	public Container(int containersId, Ingredient ingredient, float maxCapacity, float available) {
+		super();
+		this.containersId = containersId;
+		this.ingredient = ingredient;
+		this.maxCapacity = maxCapacity;
+		this.available = available;
+	}
 
 	public int getContainersId() {
 		return containersId;
@@ -36,44 +45,34 @@ public class Container {
 		this.containersId = containersId;
 	}
 
-	public float getTeaContainer() {
-		return teaContainer;
+	public Ingredient getIngredient() {
+		return ingredient;
 	}
 
-	public void setTeaContainer(float teaContainer) {
-		this.teaContainer = teaContainer;
+	public void setIngredient(Ingredient ingredient) {
+		this.ingredient = ingredient;
 	}
 
-	public float getCoffeeContainer() {
-		return coffeeContainer;
+	public float getMaxCapacity() {
+		return maxCapacity;
 	}
 
-	public void setCoffeeContainer(float coffeeContainer) {
-		this.coffeeContainer = coffeeContainer;
+	public void setMaxCapacity(float maxCapacity) {
+		this.maxCapacity = maxCapacity;
 	}
 
-	public float getSugarContainer() {
-		return sugarContainer;
+	public float getAvailable() {
+		return available;
 	}
 
-	public void setSugarContainer(float sugarContainer) {
-		this.sugarContainer = sugarContainer;
+	public void setAvailable(float available) {
+		this.available = available;
 	}
 
-	public float getWaterContainer() {
-		return waterContainer;
-	}
-
-	public void setWaterContainer(float waterContainer) {
-		this.waterContainer = waterContainer;
-	}
-
-	public float getMilkContainer() {
-		return milkContainer;
-	}
-
-	public void setMilkContainer(float milkContainer) {
-		this.milkContainer = milkContainer;
+	@Override
+	public String toString() {
+		return "Container [containersId=" + containersId + ", ingredient=" + ingredient + ", maxCapacity="
+				+ maxCapacity + ", available=" + available + "]";
 	}
 	
 }

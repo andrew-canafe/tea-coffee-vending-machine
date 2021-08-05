@@ -19,6 +19,17 @@ public class Drink {
 	@Column(name="COST")
 	private float cost;
 
+	public Drink() {
+		super();
+	}
+
+	public Drink(int drinkId, String name, float cost) {
+		super();
+		this.drinkId = drinkId;
+		this.name = name;
+		this.cost = cost;
+	}
+
 	public int getDrinkId() {
 		return drinkId;
 	}

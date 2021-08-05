@@ -1,11 +1,15 @@
 package cogent.tcvm.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="REFILLS")
@@ -15,23 +19,32 @@ public class Refill {
 	@Column(name="REFILL_ID")
 	private int refillId;
 	
-	@Column(name="TEA_REFILL")
-	private int teaRefill;
+	@ManyToOne
+	@JoinColumn(name="INGREDIENT_ID")
+	private Ingredient ingredient;
 	
-	@Column(name="COFFEE_REFILL")
-	private int coffeeRefill;
+	@Column(name="QUANTITY")
+	private int quantity;
 	
-	@Column(name="SUGAR_REFILL")
-	private int sugarRefill;
+	@Column(name="UNIT_QUANTITY")
+	private float unitQuantity;
 	
-	@Column(name="WATER_REFILL")
-	private int waterRefill;
-	
-	@Column(name="MILK_REFILL")
-	private int milkRefill;
-	
+	@JsonIgnore
 	@Column(name="DATE")
-	private Date date;
+	private LocalDate date;
+
+	public Refill() {
+		super();
+	}
+
+	public Refill(int refillId, int quantity, float unitQuantity, LocalDate date, Ingredient ingredient) {
+		super();
+		this.refillId = refillId;
+		this.quantity = quantity;
+		this.unitQuantity = unitQuantity;
+		this.date = date;
+		this.ingredient = ingredient;
+	}
 
 	public int getRefillId() {
 		return refillId;
@@ -41,52 +54,42 @@ public class Refill {
 		this.refillId = refillId;
 	}
 
-	public int getTeaRefill() {
-		return teaRefill;
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public void setTeaRefill(int teaRefill) {
-		this.teaRefill = teaRefill;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
-	public int getCoffeeRefill() {
-		return coffeeRefill;
+	public float getUnitQuantity() {
+		return unitQuantity;
 	}
 
-	public void setCoffeeRefill(int coffeeRefill) {
-		this.coffeeRefill = coffeeRefill;
+	public void setUnitQuantity(float unitQuantity) {
+		this.unitQuantity = unitQuantity;
 	}
 
-	public int getSugarRefill() {
-		return sugarRefill;
-	}
-
-	public void setSugarRefill(int sugarRefill) {
-		this.sugarRefill = sugarRefill;
-	}
-
-	public int getWaterRefill() {
-		return waterRefill;
-	}
-
-	public void setWaterRefill(int waterRefill) {
-		this.waterRefill = waterRefill;
-	}
-
-	public int getMilkRefill() {
-		return milkRefill;
-	}
-
-	public void setMilkRefill(int milkRefill) {
-		this.milkRefill = milkRefill;
-	}
-
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
+	}
+
+	public Ingredient getIngredient() {
+		return ingredient;
+	}
+
+	public void setIngredient(Ingredient ingredient) {
+		this.ingredient = ingredient;
+	}
+
+	@Override
+	public String toString() {
+		return "Refill [refillId=" + refillId + ", quantity=" + quantity + ", unitQuantity=" + unitQuantity + ", date="
+				+ date + ", ingredient=" + ingredient + "]";
 	}
 
 }
