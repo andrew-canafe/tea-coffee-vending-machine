@@ -14,7 +14,7 @@ import cogent.tcvm.repository.SaleRepository;
 
 @RestController
 @RequestMapping("/api")
-public class SaleControllers {
+public class SaleController {
 	
 	@Autowired
 	SaleRepository saleRepo;
