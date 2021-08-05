@@ -9,6 +9,10 @@ public class ContainerDetails {
 
 	private List<ContainerRow> containerRowList = new ArrayList<ContainerRow>();
 
+	public ContainerDetails() {
+		super();
+	}
+
 	public ContainerDetails(List<Container> containerList) {
 		for (Container container : containerList) {
 			String name = container.getIngredient().getName();
@@ -18,6 +22,19 @@ public class ContainerDetails {
 
 			this.containerRowList.add(new ContainerRow(name, unitType, maxCapacity, available));
 		}
+	}
+
+	public List<ContainerRow> getContainerRowList() {
+		return containerRowList;
+	}
+
+	public void setContainerRowList(List<ContainerRow> containerRowList) {
+		this.containerRowList = containerRowList;
+	}
+
+	@Override
+	public String toString() {
+		return "ContainerDetails [containerRowList=" + containerRowList + "]";
 	}
 
 }
