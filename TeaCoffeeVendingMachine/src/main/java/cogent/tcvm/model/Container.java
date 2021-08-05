@@ -8,11 +8,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CONTAINERS")
+@Table(name="CONTAINER")
 public class Container {
 	
 	@Id
-	@Column(name="CONTAINERS_ID")
+	@Column(name="CONTAINER_ID")
 	private int containersId;
 	
 	@ManyToOne

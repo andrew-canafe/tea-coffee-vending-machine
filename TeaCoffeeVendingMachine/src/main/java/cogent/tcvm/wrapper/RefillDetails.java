@@ -12,6 +12,10 @@ public class RefillDetails {
 	
 	private List<RefillRow> refillRowList = new ArrayList<RefillRow>();
 	
+	public RefillDetails() {
+		super();
+	}
+
 	public RefillDetails(List<Refill> refillList) {
 		super();
 		
@@ -59,6 +63,14 @@ public class RefillDetails {
 		}
 		
 		this.refillRowList = new ArrayList<RefillRow>(refillRowMap.values()); // Convert hash map to list
+	}
+
+	public List<RefillRow> getRefillRowList() {
+		return refillRowList;
+	}
+
+	public void setRefillRowList(List<RefillRow> refillRowList) {
+		this.refillRowList = refillRowList;
 	}
 	
 }

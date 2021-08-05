@@ -24,6 +24,7 @@ public class ContainerController {
 	@GetMapping("/container-details")
 	public ResponseEntity<?> getContainerDetails() {
 		List<Container> containerList = containerService.getAllContainers();
+		System.out.println(new ContainerDetails(containerList));
 		
 		return ResponseEntity.ok(new ContainerDetails(containerList));
 	}
