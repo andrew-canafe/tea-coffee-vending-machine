@@ -5,10 +5,10 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import cogent.tcvm.model.Refills;
+import cogent.tcvm.model.Refill;
 
-public interface RefillsRepository extends JpaRepository<Refills, Integer> {
+public interface RefillRepository extends JpaRepository<Refill, Integer> {
 
-	List<Refills> findByDate(LocalDate date);
+	List<Refill> findByDate(LocalDate date);
 	
 }
