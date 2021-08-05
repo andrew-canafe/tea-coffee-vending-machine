@@ -37,20 +37,16 @@ public class SaleController {
 		return d.getDrinkId();
 	}
 
-	@GetMapping("/total-cost")
-	public float getTotalCost() {
-		return drinkRepo.getTotalDrinkCost();
-	}
+	/*
+	 * @GetMapping("/total-cost") public float getTotalCost() { return
+	 * drinkRepo.getTotalDrinkCost(); }
+	 * 
+	 * @GetMapping("/total-cost-for-a-drink") public float
+	 * getTotalCostForDrinks(@RequestParam int id) { Drink d = new Drink();
+	 * Optional<Drink> drink = drinkRepo.findById(id); if(drink.isPresent()) {
+	 * return drinkRepo.getTotalCostForADrink(id); } return d.getDrinkId(); }
+	 */
 	
-	@GetMapping("/total-cost-for-a-drink")
-	public float getTotalCostForDrinks(@RequestParam int id) {
-		Drink d = new Drink();
-		Optional<Drink> drink = drinkRepo.findById(id);
-		if(drink.isPresent()) {
-			return drinkRepo.getTotalCostForADrink(id);
-		}
-		return d.getDrinkId();
-	}
 	
 	
 }

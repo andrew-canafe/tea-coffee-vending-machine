@@ -11,4 +11,6 @@ public interface DrinkRepository extends JpaRepository<Drink, Integer>{
 
 	List<Drink> findByDate(LocalDate date);
 
+	
+
 }
