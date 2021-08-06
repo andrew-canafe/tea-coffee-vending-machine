@@ -10,7 +10,7 @@ import cogent.tcvm.model.Refill;
 
 public class RefillDetails {
 	
-	private List<RefillRow> refillRowList = new ArrayList<RefillRow>();
+	private List<RefillRow> refillRowList;
 	
 	public RefillDetails() {
 		super();
@@ -19,6 +19,7 @@ public class RefillDetails {
 	public RefillDetails(List<Refill> refillList) {
 		super();
 		
+		refillRowList = new ArrayList<RefillRow>();
 		Map<String, RefillRow> refillRowMap = new HashMap<String, RefillRow>();
 		LocalDate today = LocalDate.now();
 		
