@@ -6,17 +6,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="INGREDIENT")
+@Table(name = "INGREDIENT")
 public class Ingredient {
 
 	@Id
-	@Column(name="INGREDIENT_ID")
+	@Column(name = "INGREDIENT_ID")
 	private int ingredientId;
-	
-	@Column(name="NAME")
+
+	@Column(name = "NAME")
 	private String name;
-	
-	@Column(name="UNIT_TYPE")
+
+	@Column(name = "UNIT_TYPE")
 	private String unitType;
 
 	public Ingredient() {
@@ -58,5 +58,5 @@ public class Ingredient {
 	public String toString() {
 		return "Ingredient [ingredientId=" + ingredientId + ", name=" + name + ", unitType=" + unitType + "]";
 	}
-	
+
 }
