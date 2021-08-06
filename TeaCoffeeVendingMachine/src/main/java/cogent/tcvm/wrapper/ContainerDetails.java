@@ -15,7 +15,7 @@ public class ContainerDetails {
 
 	public ContainerDetails(List<Container> containerList) {
 		containerRowList = new ArrayList<ContainerRow>();
-		
+
 		for (Container container : containerList) {
 			String name = container.getIngredient().getName();
 			String unitType = container.getIngredient().getUnitType();
