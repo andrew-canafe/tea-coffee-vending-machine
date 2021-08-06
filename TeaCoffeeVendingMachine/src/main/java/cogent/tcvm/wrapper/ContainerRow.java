@@ -61,4 +61,10 @@ public class ContainerRow {
 		this.fill = fill;
 	}
 
+	@Override
+	public String toString() {
+		return "ContainerRow [name=" + name + ", unitType=" + unitType + ", maxCapacity=" + maxCapacity + ", available="
+				+ available + ", fill=" + fill + "]";
+	}
+
 }
