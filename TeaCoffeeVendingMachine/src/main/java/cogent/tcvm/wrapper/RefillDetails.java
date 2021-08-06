@@ -73,5 +73,10 @@ public class RefillDetails {
 	public void setRefillRowList(List<RefillRow> refillRowList) {
 		this.refillRowList = refillRowList;
 	}
+
+	@Override
+	public String toString() {
+		return "RefillDetails [refillRowList=" + refillRowList + "]";
+	}
 	
 }

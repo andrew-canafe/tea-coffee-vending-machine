@@ -60,5 +60,11 @@ public class RefillRow {
 	public void setUnitType(String unitType) {
 		this.unitType = unitType;
 	}
+
+	@Override
+	public String toString() {
+		return "RefillRow [name=" + name + ", allDays=" + allDays + ", today=" + today + ", unitQuantity="
+				+ unitQuantity + ", unitType=" + unitType + "]";
+	}
 	
 }

@@ -53,5 +53,10 @@ public class Drink {
 	public void setCost(float cost) {
 		this.cost = cost;
 	}
+
+	@Override
+	public String toString() {
+		return "Drink [drinkId=" + drinkId + ", name=" + name + ", cost=" + cost + "]";
+	}
 	
 }

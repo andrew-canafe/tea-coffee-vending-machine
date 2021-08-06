@@ -70,5 +70,11 @@ public class Sale {
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
+
+	@Override
+	public String toString() {
+		return "Sale [saleId=" + saleId + ", drinkId=" + drinkId + ", numberOfCups=" + numberOfCups + ", date=" + date
+				+ "]";
+	}
 	
 }
