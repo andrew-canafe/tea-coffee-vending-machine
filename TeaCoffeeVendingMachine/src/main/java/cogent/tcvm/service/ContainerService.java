@@ -15,14 +15,14 @@ public class ContainerService {
 
 	@Autowired
 	private ContainerRepository containerRepository;
-	
+
 	@Autowired
 	private IngredientRepository ingredientRepository;
 
 	public List<Container> getAllContainers() {
 		return containerRepository.findAll();
 	}
-	
+
 	public Container setContainer(Container cons) {
 		return containerRepository.save(cons);
 	}
@@ -31,5 +31,5 @@ public class ContainerService {
 		Ingredient ingredient = ingredientRepository.findByName(name);
 		return containerRepository.findByIngredient(ingredient);
 	}
-	
+
 }

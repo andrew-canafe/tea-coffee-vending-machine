@@ -12,25 +12,25 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="REFILLS")
+@Table(name = "REFILLS")
 public class Refill {
 
 	@Id
-	@Column(name="REFILL_ID")
+	@Column(name = "REFILL_ID")
 	private int refillId;
-	
+
 	@ManyToOne
-	@JoinColumn(name="INGREDIENT_ID")
+	@JoinColumn(name = "INGREDIENT_ID")
 	private Ingredient ingredient;
-	
-	@Column(name="QUANTITY")
+
+	@Column(name = "QUANTITY")
 	private int quantity;
-	
-	@Column(name="UNIT_QUANTITY")
+
+	@Column(name = "UNIT_QUANTITY")
 	private float unitQuantity;
-	
+
 	@JsonIgnore
-	@Column(name="DATE")
+	@Column(name = "DATE")
 	private LocalDate date;
 
 	public Refill() {

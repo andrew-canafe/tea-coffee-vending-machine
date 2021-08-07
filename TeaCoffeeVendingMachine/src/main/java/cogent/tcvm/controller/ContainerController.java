@@ -21,34 +21,34 @@ public class ContainerController {
 
 	@Autowired
 	ContainerService containerService;
-	
+
 	@GetMapping("/container-details")
 	public ResponseEntity<?> getContainerDetails() {
 		List<Container> containerList = containerService.getAllContainers();
-		
+
 		return ResponseEntity.ok().body(new ContainerDetails(containerList));
 	}
-	
+
 	@PostMapping("/container-details")
 	public ResponseEntity<?> setContainerDetails(@RequestBody ContainerDetails containerDetails) {
 		List<ContainerRow> containerRowList = containerDetails.getContainerRowList();
-		
+
 		boolean failed = false;
-		
+
 		if (containerRowList == null) {
 			failed = true;
 		} else {
 			for (ContainerRow containerRow : containerRowList) {
 				Container container = containerService.getContainerByIngredientName(containerRow.getName());
-				
+
 				if (container == null) {
 					failed = true;
 					break;
 				}
-				
+
 				float fill = containerRow.getFill();
-				float availableNew = container.getAvailable()+fill;
-				
+				float availableNew = container.getAvailable() + fill;
+
 				if (container.getMaxCapacity() >= availableNew && fill >= 0 && availableNew >= 0) {
 					container.setAvailable(availableNew);
 					containerService.setContainer(container);
@@ -58,11 +58,12 @@ public class ContainerController {
 				}
 			}
 		}
-		
+
 		if (failed) {
 			return ResponseEntity.badRequest().body("Refill operation has failed.");
 		}
-		
+
 		return ResponseEntity.ok().body("Refill operation has succeeded.");
 	}
+
 }

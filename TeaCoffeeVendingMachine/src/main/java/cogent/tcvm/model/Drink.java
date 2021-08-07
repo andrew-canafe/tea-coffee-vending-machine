@@ -6,17 +6,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="DRINK")
+@Table(name = "DRINK")
 public class Drink {
-	
+
 	@Id
-	@Column(name="DRINK_ID")
+	@Column(name = "DRINK_ID")
 	private int drinkId;
-	
-	@Column(name="NAME")
+
+	@Column(name = "NAME")
 	private String name;
-	
-	@Column(name="COST")
+
+	@Column(name = "COST")
 	private float cost;
 
 	public Drink() {
@@ -58,5 +58,5 @@ public class Drink {
 	public String toString() {
 		return "Drink [drinkId=" + drinkId + ", name=" + name + ", cost=" + cost + "]";
 	}
-	
+
 }
