@@ -19,7 +19,7 @@ public class Sale {
 
 	@ManyToOne
 	@JoinColumn(name = "DRINK_ID")
-	private Drink drinkId;
+	private Drink drink;
 
 	@Column(name = "NUMBER_OF_CUPS")
 	private int numberOfCups;
@@ -31,10 +31,10 @@ public class Sale {
 		super();
 	}
 
-	public Sale(int saleId, Drink drinkId, int numberOfCups, LocalDate date) {
+	public Sale(int saleId, Drink drink, int numberOfCups, LocalDate date) {
 		super();
 		this.saleId = saleId;
-		this.drinkId = drinkId;
+		this.drink = drink;
 		this.numberOfCups = numberOfCups;
 		this.date = date;
 	}
@@ -47,12 +47,12 @@ public class Sale {
 		this.saleId = saleId;
 	}
 
-	public Drink getDrinkId() {
-		return drinkId;
+	public Drink getDrink() {
+		return drink;
 	}
 
-	public void setDrinkId(Drink drinkId) {
-		this.drinkId = drinkId;
+	public void setDrink(Drink drink) {
+		this.drink = drink;
 	}
 
 	public int getNumberOfCups() {
@@ -73,7 +73,7 @@ public class Sale {
 
 	@Override
 	public String toString() {
-		return "Sale [saleId=" + saleId + ", drinkId=" + drinkId + ", numberOfCups=" + numberOfCups + ", date=" + date
+		return "Sale [saleId=" + saleId + ", drink=" + drink + ", numberOfCups=" + numberOfCups + ", date=" + date
 				+ "]";
 	}
 
