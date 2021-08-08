@@ -13,13 +13,13 @@ public class RefillService {
 
 	@Autowired
 	private RefillRepository refillRepository;
-	
+
 	public List<Refill> getAllRefills() {
 		return refillRepository.findAll();
 	}
-	
+
 	public Refill setRefill(Refill refs) {
 		return refillRepository.save(refs);
 	}
-	
+
 }

@@ -10,5 +10,5 @@ import cogent.tcvm.model.Drink;
 public interface DrinkRepository extends JpaRepository<Drink, Integer> {
 
 	List<Drink> findByName(String name);
-	
+
 }

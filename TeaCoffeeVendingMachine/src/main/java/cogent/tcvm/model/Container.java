@@ -4,25 +4,25 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CONTAINER")
+@Table(name = "CONTAINER")
 public class Container {
-	
+
 	@Id
-	@Column(name="CONTAINER_ID")
+	@Column(name = "CONTAINER_ID")
 	private int containersId;
-	
-	@ManyToOne
-	@JoinColumn(name="INGREDIENT_ID")
+
+	@OneToOne
+	@JoinColumn(name = "INGREDIENT_ID")
 	private Ingredient ingredient;
-	
-	@Column(name="MAX_CAPACITY")
+
+	@Column(name = "MAX_CAPACITY")
 	private float maxCapacity;
-	
-	@Column(name="AVAILABLE")
+
+	@Column(name = "AVAILABLE")
 	private float available;
 
 	public Container() {
@@ -71,8 +71,8 @@ public class Container {
 
 	@Override
 	public String toString() {
-		return "Container [containersId=" + containersId + ", ingredient=" + ingredient + ", maxCapacity="
-				+ maxCapacity + ", available=" + available + "]";
+		return "Container [containersId=" + containersId + ", ingredient=" + ingredient + ", maxCapacity=" + maxCapacity
+				+ ", available=" + available + "]";
 	}
-	
+
 }

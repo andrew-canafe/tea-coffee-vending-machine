@@ -18,12 +18,12 @@ public class RefillController {
 
 	@Autowired
 	RefillService refillService;
-	
+
 	@GetMapping("/refill-details")
 	public ResponseEntity<?> getRefillDetails() {
 		List<Refill> refillList = refillService.getAllRefills();
-		
-		return ResponseEntity.ok(new RefillDetails(refillList));
+
+		return ResponseEntity.ok().body(new RefillDetails(refillList));
 	}
-	
+
 }

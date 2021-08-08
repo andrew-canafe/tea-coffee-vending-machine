@@ -1,13 +1,13 @@
 package cogent.tcvm.wrapper;
 
 public class RefillRow {
-	
+
 	private String name;
 	private int allDays;
 	private int today;
 	private float unitQuantity;
 	private String unitType;
-	
+
 	public RefillRow() {
 		super();
 	}
@@ -60,5 +60,11 @@ public class RefillRow {
 	public void setUnitType(String unitType) {
 		this.unitType = unitType;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "RefillRow [name=" + name + ", allDays=" + allDays + ", today=" + today + ", unitQuantity="
+				+ unitQuantity + ", unitType=" + unitType + "]";
+	}
+
 }

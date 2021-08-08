@@ -10,21 +10,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="SALE")
+@Table(name = "SALE")
 public class Sale {
 
 	@Id
-	@Column(name="SALE_ID")
+	@Column(name = "SALE_ID")
 	private int saleId;
-	
+
 	@ManyToOne
-	@JoinColumn(name="DRINK_ID")
+	@JoinColumn(name = "DRINK_ID")
 	private Drink drink;
-	
-	@Column(name="NUMBER_OF_CUPS")
+
+	@Column(name = "NUMBER_OF_CUPS")
 	private int numberOfCups;
-	
-	@Column(name="DATE")
+
+	@Column(name = "DATE")
 	private LocalDate date;
 
 	public Sale() {
@@ -70,5 +70,11 @@ public class Sale {
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Sale [saleId=" + saleId + ", drink=" + drink + ", numberOfCups=" + numberOfCups + ", date=" + date
+				+ "]";
+	}
+
 }

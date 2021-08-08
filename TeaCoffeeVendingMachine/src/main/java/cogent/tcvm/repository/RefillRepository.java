@@ -10,5 +10,5 @@ import cogent.tcvm.model.Refill;
 public interface RefillRepository extends JpaRepository<Refill, Integer> {
 
 	List<Refill> findByDate(LocalDate date);
-	
+
 }
