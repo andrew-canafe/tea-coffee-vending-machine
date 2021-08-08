@@ -1,8 +1,13 @@
 package cogent.tcvm.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,16 +23,20 @@ public class Drink {
 
 	@Column(name = "COST")
 	private float cost;
+	
+	@OneToMany(mappedBy = "drinkIngredient.drink", cascade = CascadeType.ALL)
+	Set<DrinkIngredient> drinkIngedients = new HashSet<DrinkIngredient>();
 
 	public Drink() {
 		super();
 	}
 
-	public Drink(int drinkId, String name, float cost) {
+	public Drink(int drinkId, String name, float cost, Set<DrinkIngredient> drinkIngedients) {
 		super();
 		this.drinkId = drinkId;
 		this.name = name;
 		this.cost = cost;
+		this.drinkIngedients = drinkIngedients;
 	}
 
 	public int getDrinkId() {
@@ -54,9 +63,18 @@ public class Drink {
 		this.cost = cost;
 	}
 
+	public Set<DrinkIngredient> getDrinkIngedients() {
+		return drinkIngedients;
+	}
+
+	public void setDrinkIngedients(Set<DrinkIngredient> drinkIngedients) {
+		this.drinkIngedients = drinkIngedients;
+	}
+
 	@Override
 	public String toString() {
-		return "Drink [drinkId=" + drinkId + ", name=" + name + ", cost=" + cost + "]";
+		return "Drink [drinkId=" + drinkId + ", name=" + name + ", cost=" + cost + ", drinkIngedients="
+				+ drinkIngedients + "]";
 	}
 
 }
