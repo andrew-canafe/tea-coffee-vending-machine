@@ -59,7 +59,7 @@ public class DrinkService {
 			 int dId = i.getDrinkIngredient().getIngredient().getIngredientId();
 			  for(Container c: allContainers) {
 				  int cId = c.getIngredient().getIngredientId();
-				  if((dId == cId) && sale.getNumberOfCups()*i.getQuantity() > c.getAvailable() ) {
+				  if((dId == cId) && sale.getNumberOfCups()*i.getUnitQuantity() > c.getAvailable() ) {
 					  allGood = false;
 				  }
 			  } 
@@ -76,7 +76,7 @@ public class DrinkService {
 	  		for(Container c: allContainers) {
 	  			int cId = c.getIngredient().getIngredientId();
 	  			if(dId == cId) {
-	  				c.setAvailable(c.getAvailable() - (sale.getNumberOfCups()*d.getQuantity()));
+	  				c.setAvailable(c.getAvailable() - (sale.getNumberOfCups()*d.getUnitQuantity()));
 	  				cRepo.save(c);
 	  			}
 	  		}
