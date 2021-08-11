@@ -5,10 +5,12 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "DRINK_INGREDIENT")
 public class DrinkIngredient {
-
+	@JsonIgnore
 	@EmbeddedId
 	/*@JoinColumns({
 		@JoinColumn(name = "DRINK_ID", referencedColumnName = "DRINK_ID"),
