@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +16,7 @@ import cogent.tcvm.service.ContainerService;
 import cogent.tcvm.wrapper.ContainerDetails;
 import cogent.tcvm.wrapper.ContainerRow;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class ContainerController {

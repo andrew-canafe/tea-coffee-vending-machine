@@ -5,28 +5,26 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "DRINK_INGREDIENT")
 public class DrinkIngredient {
-
+	@JsonIgnore
 	@EmbeddedId
-	/*@JoinColumns({
-		@JoinColumn(name = "DRINK_ID", referencedColumnName = "DRINK_ID"),
-		@JoinColumn(name = "INGREDIENT_ID", referencedColumnName = "INGREDIENT_ID")
-	})*/
 	private DrinkIngredientId drinkIngredient;
 	
-	@Column(name = "QUANTITY")
-	private float quantity;
+	@Column(name = "UNIT_QUANTITY")
+	private float unitQuantity;
 
 	public DrinkIngredient() {
 		super();
 	}
 
-	public DrinkIngredient(DrinkIngredientId drinkIngredient, float quantity) {
+	public DrinkIngredient(DrinkIngredientId drinkIngredient, float unitQuantity) {
 		super();
 		this.drinkIngredient = drinkIngredient;
-		this.quantity = quantity;
+		this.unitQuantity = unitQuantity;
 	}
 
 	public DrinkIngredientId getDrinkIngredient() {
@@ -37,17 +35,17 @@ public class DrinkIngredient {
 		this.drinkIngredient = drinkIngredient;
 	}
 
-	public float getQuantity() {
-		return quantity;
+	public float getUnitQuantity() {
+		return unitQuantity;
 	}
 
-	public void setQuantity(float quantity) {
-		this.quantity = quantity;
+	public void setUnitQuantity(float unitQuantity) {
+		this.unitQuantity = unitQuantity;
 	}
 
 	@Override
 	public String toString() {
-		return "DrinkIngredient [drinkIngredient=" + drinkIngredient + ", quantity=" + quantity + "]";
+		return "DrinkIngredient [drinkIngredient=" + drinkIngredient + ", unitQuantity=" + unitQuantity + "]";
 	}
 	
 }
