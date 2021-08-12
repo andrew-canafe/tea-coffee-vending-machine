@@ -1,5 +1,6 @@
 package cogent.tcvm.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cogent.tcvm.model.Container;
+import cogent.tcvm.model.Refill;
 import cogent.tcvm.service.ContainerService;
+import cogent.tcvm.service.RefillService;
 import cogent.tcvm.wrapper.ContainerDetails;
 import cogent.tcvm.wrapper.ContainerRow;
 
@@ -51,9 +54,8 @@ public class ContainerController {
 				float fill = containerRow.getFill();
 				float availableNew = container.getAvailable() + fill;
 
-				if (container.getMaxCapacity() >= availableNew && fill >= 0 && availableNew >= 0) {
-					container.setAvailable(availableNew);
-					containerService.setContainer(container);
+				if (container.getMaxCapacity() >= availableNew && fill > 0 && availableNew >= 0) {
+					containerService.setContainer(container, fill, availableNew);
 				} else {
 					failed = true;
 					break;
