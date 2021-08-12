@@ -52,12 +52,12 @@ public class ContainerController {
 				float fill = containerRow.getFill();
 				float availableNew = container.getAvailable() + fill;
 
-				if (container.getMaxCapacity() >= availableNew && fill > 0 && availableNew >= 0) {
+				if (container.getMaxCapacity() > availableNew && fill > 0 && availableNew > 0) {
 					containerService.setContainer(container, fill, availableNew);
-				} else {
+				} /*else {
 					failed = true;
 					break;
-				}
+				}*/
 			}
 		}
 
