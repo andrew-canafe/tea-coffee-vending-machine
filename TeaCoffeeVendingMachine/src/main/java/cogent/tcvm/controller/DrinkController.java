@@ -19,29 +19,25 @@ import cogent.tcvm.wrapper.DrinkDetails;
 @RestController
 @RequestMapping("/api")
 public class DrinkController {
-	
+
 	@Autowired
 	private DrinkService dServ;
-	
+
 	@GetMapping("/choose-drink")
-	public ResponseEntity<?> chooseDrink(@RequestParam int amt, @RequestParam String drink ){
-		if(amt <= 0) {
-			return ResponseEntity
-					.badRequest()
-					.body("Error: Cannot complete request!");
-		}else {
+	public ResponseEntity<?> chooseDrink(@RequestParam int amt, @RequestParam String drink) {
+		if (amt <= 0) {
+			return ResponseEntity.badRequest().body("Error: Cannot complete request!");
+		} else {
 			Sale s = dServ.chooseDrink(amt, drink);
-			return ResponseEntity
-					.ok().body(s);
+			return ResponseEntity.ok().body(s);
 		}
 	}
-	
+
 	@GetMapping("/drink-details")
-	public ResponseEntity<?> getDrinkDetails(){
+	public ResponseEntity<?> getDrinkDetails() {
 		List<Drink> drinks = dServ.findAll();
 		DrinkDetails d = new DrinkDetails(drinks);
-		return ResponseEntity
-				.ok().body(d);
+		return ResponseEntity.ok().body(d);
 	}
-	
+
 }
