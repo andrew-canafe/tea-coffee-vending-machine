@@ -15,7 +15,7 @@ public class DrinkDetails {
 			String name = drink.getName();
 			float cost = drink.getCost();
 
-			this.drinkRowList.add(new DrinkRow(name, cost, 1));
+			this.drinkRowList.add(new DrinkRow(name, cost, 0));
 		}
 	}
 
