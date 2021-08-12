@@ -1,6 +1,5 @@
 package cogent.tcvm.controller;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cogent.tcvm.model.Container;
-import cogent.tcvm.model.Refill;
+import cogent.tcvm.response.MessageResponse;
 import cogent.tcvm.service.ContainerService;
-import cogent.tcvm.service.RefillService;
 import cogent.tcvm.wrapper.ContainerDetails;
 import cogent.tcvm.wrapper.ContainerRow;
 
@@ -64,10 +62,10 @@ public class ContainerController {
 		}
 
 		if (failed) {
-			return ResponseEntity.badRequest().body("Refill operation has failed.");
+			return ResponseEntity.badRequest().body(new MessageResponse("Refill operation has failed."));
 		}
 
-		return ResponseEntity.ok().body("Refill operation has succeeded.");
+		return ResponseEntity.ok().body(new MessageResponse("Refill operation has succeeded."));
 	}
 
 }

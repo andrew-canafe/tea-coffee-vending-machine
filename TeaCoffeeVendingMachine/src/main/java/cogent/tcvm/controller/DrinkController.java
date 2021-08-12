@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cogent.tcvm.model.Drink;
 import cogent.tcvm.model.Sale;
+import cogent.tcvm.response.MessageResponse;
 import cogent.tcvm.service.DrinkService;
 import cogent.tcvm.wrapper.DrinkDetails;
 
@@ -26,7 +27,7 @@ public class DrinkController {
 	@GetMapping("/choose-drink")
 	public ResponseEntity<?> chooseDrink(@RequestParam int amt, @RequestParam String drink) {
 		if (amt <= 0) {
-			return ResponseEntity.badRequest().body("Error: Cannot complete request!");
+			return ResponseEntity.badRequest().body(new MessageResponse("Choose drink operation has failed."));
 		} else {
 			Sale s = dServ.chooseDrink(amt, drink);
 			return ResponseEntity.ok().body(s);
