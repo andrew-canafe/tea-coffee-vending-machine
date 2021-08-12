@@ -2,6 +2,7 @@ package cogent.tcvm.controller;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,14 +24,19 @@ public class DrinkController {
 	@Autowired
 	private DrinkService dServ;
 	
+	final Logger logger = Logger.getLogger(DrinkController.class);
+	
 	@GetMapping("/choose-drink")
 	public ResponseEntity<?> chooseDrink(@RequestParam int amt, @RequestParam String drink ){
+		
 		if(amt <= 0) {
+			logger.error("Error: Amount is less than zero!");
 			return ResponseEntity
 					.badRequest()
 					.body("Error: Cannot complete request!");
 		}else {
 			Sale s = dServ.chooseDrink(amt, drink);
+			logger.info("Sale created succefully!");
 			return ResponseEntity
 					.ok().body(s);
 		}
@@ -38,6 +44,7 @@ public class DrinkController {
 	
 	@GetMapping("/drink-details")
 	public ResponseEntity<?> getDrinkDetails(){
+		logger.info("Retrieving drink details");
 		List<Drink> drinks = dServ.findAll();
 		DrinkDetails d = new DrinkDetails(drinks);
 		return ResponseEntity

@@ -2,6 +2,7 @@ package cogent.tcvm.controller;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,9 +24,12 @@ public class ContainerController {
 
 	@Autowired
 	ContainerService containerService;
+	
+	final Logger logger = Logger.getLogger(DrinkController.class);
 
 	@GetMapping("/container-details")
 	public ResponseEntity<?> getContainerDetails() {
+		logger.info("Retrieving Container Details");
 		List<Container> containerList = containerService.getAllContainers();
 
 		return ResponseEntity.ok().body(new ContainerDetails(containerList));
@@ -34,7 +38,7 @@ public class ContainerController {
 	@PostMapping("/container-details")
 	public ResponseEntity<?> setContainerDetails(@RequestBody ContainerDetails containerDetails) {
 		List<ContainerRow> containerRowList = containerDetails.getContainerRowList();
-
+		logger.info("Setting Container Details");
 		boolean failed = false;
 
 		if (containerRowList == null) {
@@ -62,9 +66,10 @@ public class ContainerController {
 		}
 
 		if (failed) {
+			logger.error("Failed to refill.");
 			return ResponseEntity.badRequest().body("Refill operation has failed.");
 		}
-
+		logger.info("Refill successful!");
 		return ResponseEntity.ok().body("Refill operation has succeeded.");
 	}
 
