@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cogent.tcvm.model.Container;
-import cogent.tcvm.response.MessageResponse;
+import cogent.tcvm.payload.response.MessageResponse;
 import cogent.tcvm.service.ContainerService;
 import cogent.tcvm.wrapper.ContainerDetails;
 import cogent.tcvm.wrapper.ContainerRow;

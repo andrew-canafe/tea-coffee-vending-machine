@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cogent.tcvm.model.Drink;
 import cogent.tcvm.model.Sale;
-import cogent.tcvm.response.MessageResponse;
+import cogent.tcvm.payload.response.MessageResponse;
 import cogent.tcvm.service.DrinkService;
 import cogent.tcvm.wrapper.DrinkDetails;
 

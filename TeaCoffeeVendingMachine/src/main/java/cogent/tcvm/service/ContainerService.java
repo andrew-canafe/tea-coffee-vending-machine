@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cogent.tcvm.model.Container;
 import cogent.tcvm.model.Ingredient;
@@ -38,6 +39,7 @@ public class ContainerService {
 		return containerRepository.findByIngredient(ingredient);
 	}
 
+	@Transactional
 	public void setContainer(Container container, float fill, float availableNew) {
 		container.setAvailable(availableNew);
 		containerRepository.save(container);
