@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cogent.tcvm.model.Container;
+import cogent.tcvm.response.MessageResponse;
 import cogent.tcvm.service.ContainerService;
 import cogent.tcvm.wrapper.ContainerDetails;
 import cogent.tcvm.wrapper.ContainerRow;
@@ -51,9 +52,8 @@ public class ContainerController {
 				float fill = containerRow.getFill();
 				float availableNew = container.getAvailable() + fill;
 
-				if (container.getMaxCapacity() >= availableNew && fill >= 0 && availableNew >= 0) {
-					container.setAvailable(availableNew);
-					containerService.setContainer(container);
+				if (container.getMaxCapacity() >= availableNew && fill > 0 && availableNew >= 0) {
+					containerService.setContainer(container, fill, availableNew);
 				} else {
 					failed = true;
 					break;
@@ -62,10 +62,10 @@ public class ContainerController {
 		}
 
 		if (failed) {
-			return ResponseEntity.badRequest().body("Refill operation has failed.");
+			return ResponseEntity.badRequest().body(new MessageResponse("Refill operation has failed."));
 		}
 
-		return ResponseEntity.ok().body("Refill operation has succeeded.");
+		return ResponseEntity.ok().body(new MessageResponse("Refill operation has succeeded."));
 	}
 
 }

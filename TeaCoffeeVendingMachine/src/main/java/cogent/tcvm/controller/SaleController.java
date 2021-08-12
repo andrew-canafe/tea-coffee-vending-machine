@@ -17,16 +17,15 @@ import cogent.tcvm.wrapper.SaleDetails;
 @RestController
 @RequestMapping("/api")
 public class SaleController {
-	
+
 	@Autowired
 	SaleService saleService;
-	
+
 	@GetMapping("/total-sales")
 	public ResponseEntity<?> totalSales() {
 		List<Sale> sales = saleService.findAll();
 		SaleDetails sDetails = new SaleDetails(sales);
-		return ResponseEntity
-				.ok().body(sDetails);
-	}	
-	
+		return ResponseEntity.ok().body(sDetails);
+	}
+
 }
