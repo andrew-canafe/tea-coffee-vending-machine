@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,12 +16,13 @@ import cogent.tcvm.wrapper.SaleDetails;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/admin")
 public class SaleController {
 
 	@Autowired
 	SaleService saleService;
 
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/total-sales")
 	public ResponseEntity<?> totalSales() {
 		List<Sale> sales = saleService.findAll();

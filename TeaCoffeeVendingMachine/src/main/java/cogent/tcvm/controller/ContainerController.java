@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,12 +20,13 @@ import cogent.tcvm.wrapper.ContainerRow;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/admin")
 public class ContainerController {
 
 	@Autowired
 	ContainerService containerService;
 
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/container-details")
 	public ResponseEntity<?> getContainerDetails() {
 		List<Container> containerList = containerService.getAllContainers();
@@ -32,6 +34,7 @@ public class ContainerController {
 		return ResponseEntity.ok().body(new ContainerDetails(containerList));
 	}
 
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/container-details")
 	public ResponseEntity<?> setContainerDetails(@RequestBody ContainerDetails containerDetails) {
 		List<ContainerRow> containerRowList = containerDetails.getContainerRowList();
@@ -62,10 +65,10 @@ public class ContainerController {
 		}
 
 		if (failed) {
-			return ResponseEntity.badRequest().body(new MessageResponse("Refill operation has failed."));
+			return ResponseEntity.badRequest().body(new MessageResponse("Refill operation failed."));
 		}
 
-		return ResponseEntity.ok().body(new MessageResponse("Refill operation has succeeded."));
+		return ResponseEntity.ok().body(new MessageResponse("Refill operation succeeded."));
 	}
 
 }

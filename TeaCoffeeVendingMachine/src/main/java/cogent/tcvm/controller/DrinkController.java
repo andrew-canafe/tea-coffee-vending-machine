@@ -18,7 +18,7 @@ import cogent.tcvm.wrapper.DrinkDetails;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/user")
 public class DrinkController {
 
 	@Autowired
@@ -27,7 +27,7 @@ public class DrinkController {
 	@GetMapping("/choose-drink")
 	public ResponseEntity<?> chooseDrink(@RequestParam int amt, @RequestParam String drink) {
 		if (amt <= 0) {
-			return ResponseEntity.badRequest().body(new MessageResponse("Choose drink operation has failed."));
+			return ResponseEntity.badRequest().body(new MessageResponse("Choose drink operation failed."));
 		} else {
 			Sale s = dServ.chooseDrink(amt, drink);
 			return ResponseEntity.ok().body(s);
